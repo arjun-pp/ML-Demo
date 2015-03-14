@@ -1,7 +1,7 @@
 
 import sys
 from PyQt4 import QtCore, QtGui, uic
-first_page = uic.loadUiType("/home/james_alcatraz/Spyproject/ML-Demo/ui/first_page.ui")[0]
+first_page = uic.loadUiType("../ui/first_page.ui")[0]
 class MyWindowClass(QtGui.QMainWindow, first_page):
     
     def __init__(self, parent=None):
