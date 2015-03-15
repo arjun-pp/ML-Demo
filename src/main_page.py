@@ -1,6 +1,8 @@
 
 import sys
+
 from PyQt4 import QtCore, QtGui, uic
+import constants
 first_page = uic.loadUiType("../ui/first_page.ui")[0]
 class MyWindowClass(QtGui.QMainWindow, first_page):
     
@@ -12,21 +14,12 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         self.push_unsupervised.clicked.connect(self.push_unsupervised_clicked)  #   to the buttons
 
         self.menuHelp.addAction('&About', self.about)  # add About to Help
-        self.statusBar().showMessage("Start Page", 10000)
+        self.statusBar().showMessage("Start Page")
+        self.statusBar().setSizeGripEnabled(False)
         
 
     def about(self):
-        QtGui.QMessageBox.about(self, "About",
-"""                                                Minor Project
-
-Copyright 2015 Arjun P.P. , Mandeep Singh
-
-This is minor project for our undergraduate course in Information Technology. The project demonstrates some Machine Learning algorithms.
-
-
-The project uses Qt framework along with PyQt 4 plugin to create the UI.
-"""
-)
+        QtGui.QMessageBox.about(self, "About",constants.ABOUT_MESSAGE)
     
     def push_supervised_clicked(self):
         self 
