@@ -29,30 +29,92 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="push_supervised">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>240</y>
-      <width>261</width>
-      <height>121</height>
+      <x>30</x>
+      <y>30</y>
+      <width>391</width>
+      <height>81</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>22</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>Supervised Learning</string>
+     <string>SUPERVISED LEARNING </string>
     </property>
    </widget>
-   <widget class="QPushButton" name="push_unsupervised">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>240</y>
-      <width>261</width>
-      <height>121</height>
+      <x>30</x>
+      <y>260</y>
+      <width>391</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>22</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>UNSUPERVISED LEARNING </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="push_knn">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>110</y>
+      <width>181</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Unsupervised Learning</string>
+     <string>K NN </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="push_naive">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>190</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>NAIVE BAYES</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="push_kmeans">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>350</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>K MEANS</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="push_fcm">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>440</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>FUZZY C MEANS</string>
     </property>
    </widget>
   </widget>
