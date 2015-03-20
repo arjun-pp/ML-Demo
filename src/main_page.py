@@ -1,8 +1,11 @@
 
 import sys
+import k_nn
 
-from PyQt4 import QtCore, QtGui, uic
 import constants
+
+import matplotlib.pyplot as plt
+from PyQt4 import QtCore, QtGui, uic
 first_page = uic.loadUiType("../ui/first_page.ui")[0]
 class MyWindowClass(QtGui.QMainWindow, first_page):
     
@@ -24,6 +27,25 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         QtGui.QMessageBox.about(self, "About",constants.ABOUT_MESSAGE)
     
     def push_knn_clicked(self):
+        training_set=[]
+        test_set=[]
+        split = 0.67
+        k_nn.load_data_set(  split, constants.IRIS_DATA, training_set, test_set, )
+        
+        plt.text(4 , 10, str('Train set: ' + repr(len(training_set))), size = 15)
+        print 'Test set: ' + repr(len(test_set))
+    	# generate predictions
+        predictions=[]
+        k = 3
+        for x in range(len(test_set)):
+            neighbors = k_nn.get_neighbors(training_set, test_set[x], k)
+            result = k_nn.get_class(neighbors)
+            for y in range(0,k):
+                print neighbors[y]
+            predictions.append(result)
+            #print('> predicted=' + repr(result) + ', actual=' + repr(test_set[x][-1]))
+    	
+        plt.show()        
         self 
         
     def push_naive_clicked(self):

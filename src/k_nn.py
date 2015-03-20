@@ -4,9 +4,10 @@ import csv
 import random
 import constants
 import math
+import operator
 
-def load_data_set(training_set = [], test_set = [], split):
-    with open(constants.IRIS_DATA, 'rb') as csvfile:
+def load_data_set( split, filename, training_set = [], test_set = []):
+    with open(filename, 'rb') as csvfile:
 	    lines = csv.reader(csvfile)
 	    dataset = list(lines)
 	    for x in range(len(dataset)-1):
@@ -19,17 +20,17 @@ def load_data_set(training_set = [], test_set = [], split):
              
              
 def euclidean_distance(instance1, instance2, length):
-    distance = 0
+    distance = 0.0
     for i in range(length):
         distance += pow(instance1[i] - instance2[i], 2) 
     return math.sqrt(distance)
 
 def get_neighbors(training_set, test_instance, k):
     distances = []
-    test_length = len(test_instance)
+    test_length = len(test_instance) - 1
     for trset in training_set:
         dist = euclidean_distance(test_instance, trset, test_length)
-        distances.append(trset, distt)
+        distances.append((trset, dist))
         
     distances.sort(key = operator.itemgetter(1) )
     neighbors = []
@@ -37,6 +38,25 @@ def get_neighbors(training_set, test_instance, k):
         neighbors.append(distances[i][0])
         
     return neighbors
+    
+def get_class(neighbors):
+    class_votes = {}
+    for i in range(len(neighbors)):
+        response = neighbors[i][-1]
+        if response in class_votes:
+            class_votes[response] += 1
+        else:
+            class_votes[response] = 1
+            
+    sorted_votes = sorted(class_votes.iteritems(), key = operator.itemgetter(1), reverse = True)
+    return sorted_votes[0][0]
+    
+#    def main():
+#    	# prepare data
+#    	
+#    	
+#    main()
+                
         
     
         
