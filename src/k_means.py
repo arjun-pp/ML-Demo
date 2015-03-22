@@ -10,12 +10,6 @@ from collections import namedtuple
 from random import random, choice
 from copy import copy
  
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    pass
- 
  
 FLOAT_MAX = 1e100
  
