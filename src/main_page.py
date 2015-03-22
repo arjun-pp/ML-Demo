@@ -32,7 +32,7 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         split = 0.67
         k_nn.load_data_set(  split, constants.IRIS_DATA, training_set, test_set, )
         
-        plt.text(4 , 10, str('Train set: ' + repr(len(training_set))), size = 15)
+        #plt.text(4 , 10, str('Train set: ' + repr(len(training_set))), size = 15)
         print 'Test set: ' + repr(len(test_set))
     	# generate predictions
         predictions=[]
@@ -45,17 +45,41 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
             predictions.append(result)
             #print('> predicted=' + repr(result) + ', actual=' + repr(test_set[x][-1]))
     	
-        plt.show()        
+        #plt.show()        
         self 
         
     def push_naive_clicked(self):
         self 
         
     def push_kmeans_clicked(self):
-        npoints = 30000
+        npoints = 100
         k = 7 # # clusters
-        points = k_means.generate_points(npoints, 10)
+        colors = []
+        radius = 10
+        points = k_means.generate_points(npoints, radius)
         cluster_centers = k_means.lloyd(points, k)
+        for i in xrange(len(cluster_centers)):
+            colors.append(((3 * (i + 1) % 11) / 11.0,
+                             (7 * i % 11) / 11.0,
+                             (9 * i % 11) / 11.0))
+       
+        plt.axis([-radius, radius, -radius, radius])
+        for i, cc in  enumerate(cluster_centers):
+            plt.plot(cc.x, cc.y, linestyle = 'None', marker = '<', markersize = 10, color = colors[i])
+            
+            for p in points:
+                
+                if p.group != i:
+                    continue
+                plt.plot(p.x, p.y, linestyle = 'None', marker = 'o', color = colors[i])
+                
+            
+            
+        
+        
+        #plt.plot(cluster_x, cluster_y, linestyle = 'None', marker = '<', markerfacecolor = 'red')
+        
+        plt.show()
         #k_means.print_eps(points, cluster_centers)
         
         
@@ -68,3 +92,4 @@ myWindow = MyWindowClass(None)
 myWindow.show()
 
 app.exec_()
+
