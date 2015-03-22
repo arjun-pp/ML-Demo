@@ -51,9 +51,13 @@ def get_class(neighbors):
     sorted_votes = sorted(class_votes.iteritems(), key = operator.itemgetter(1), reverse = True)
     return sorted_votes[0][0]
     
-#    def main():
+    def main():
 #    	# prepare data
 #    	
 #    	
-#    main()
+        main()
                 
+        
+    
+        
+    
