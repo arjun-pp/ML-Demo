@@ -1,7 +1,7 @@
 
 import sys
 import k_nn
-
+import k_means
 import constants
 
 import matplotlib.pyplot as plt
@@ -52,7 +52,11 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         self 
         
     def push_kmeans_clicked(self):
-        self
+        npoints = 30000
+        k = 7 # # clusters
+        points = k_means.generate_points(npoints, 10)
+        cluster_centers = k_means.lloyd(points, k)
+        #k_means.print_eps(points, cluster_centers)
         
         
     def push_fcm_clicked(self):
