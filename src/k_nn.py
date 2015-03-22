@@ -8,16 +8,16 @@ import operator
 
 def load_data_set( split, filename, training_set = [], test_set = []):
     with open(filename, 'rb') as csvfile:
-	    lines = csv.reader(csvfile)
-	    dataset = list(lines)
-	    for x in range(len(dataset)-1):
-	        for y in range(2):
-	            dataset[x][y] = float(dataset[x][y])
-	        if random.random() < split:
-	            training_set.append(dataset[x])
-	        else:
-	            test_set.append(dataset[x])
-             
+        lines = csv.reader(csvfile)
+        dataset = list(lines)
+        for x in range(len(dataset)-1):
+            for y in range(2):
+                dataset[x][y] = float(dataset[x][y])
+            if random.random() < split:
+               training_set.append(dataset[x])
+            else:
+               test_set.append(dataset[x])
+
              
 def euclidean_distance(instance1, instance2, length):
     distance = 0.0
