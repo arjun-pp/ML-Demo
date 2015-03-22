@@ -11,7 +11,7 @@ def load_data_set( split, filename, training_set = [], test_set = []):
 	    lines = csv.reader(csvfile)
 	    dataset = list(lines)
 	    for x in range(len(dataset)-1):
-	        for y in range(4):
+	        for y in range(2):
 	            dataset[x][y] = float(dataset[x][y])
 	        if random.random() < split:
 	            training_set.append(dataset[x])

@@ -9,4 +9,8 @@ This is minor project for our undergraduate course in Information Technology. Th
 The project uses Qt framework along with PyQt 4 plugin to create the UI.
 """
 
+<<<<<<< HEAD
 IRIS_DATA = "../data/iris/iris.data"
+=======
+IRIS_DATA = "../data/iris/iris.data"
+>>>>>>> d87760191f65426406cef7f8c54ce6af9135efb8
