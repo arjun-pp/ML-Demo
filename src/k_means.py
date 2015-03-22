@@ -167,17 +167,18 @@ def lloyd(points, nclusters):
 #         print ("\n0 setgray %g %g s" % ((cc.x - cx) * scale + W / 2,
 #                                         (cc.y - cy) * scale + H / 2))
 #==============================================================================
- 
-    print "\n%%%%EOF"
- 
- 
-def main():
-    npoints = 30000
-    k = 7 # # clusters
- 
-    points = generate_points(npoints, 10)
-    cluster_centers = lloyd(points, k)
-    print_eps(points, cluster_centers)
+#    print "\n%%%%EOF"
  
  
-main()
+#==============================================================================
+# def main():
+#     npoints = 30000
+#     k = 7 # # clusters
+#  
+#     points = generate_points(npoints, 10)
+#     cluster_centers = lloyd(points, k)
+#     print_eps(points, cluster_centers)
+#==============================================================================
+ 
+ 
+#main()
