@@ -92,3 +92,4 @@ myWindow = MyWindowClass(None)
 myWindow.show()
 
 app.exec_()
+
