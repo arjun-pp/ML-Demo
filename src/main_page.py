@@ -40,6 +40,7 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         k = 3
         colors = []
         for i in xrange(k):
+            # set colors
             colors.append(((3 * (i + 1) % 11) / 11.0,
                              (7 * i % 11) / 11.0,
                              (9 * i % 11) / 11.0))
@@ -54,11 +55,9 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
                 plt.plot(training_set[x][0], training_set[x][1], linestyle = 'None', marker = 's', markersize = 5, color = colors[2])
 
                 
-                
-                
+        # plot knn
         for x in range(len(test_set)):
             neighbors = k_nn.get_neighbors(training_set, test_set[x], k)
-            
             result = k_nn.get_class(neighbors)
             for y in range(0,k):
                 if test_set[x][2] == 'Iris-setosa' :
@@ -87,10 +86,11 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         points = k_means.generate_points(npoints, radius)
         cluster_centers = k_means.lloyd(points, k)
         for i in xrange(len(cluster_centers)):
+            # set colors
             colors.append(((3 * (i + 1) % 11) / 11.0,
                              (7 * i % 11) / 11.0,
                              (9 * i % 11) / 11.0))
-       
+        # plot kmeans
         plt.axis([-radius, radius, -radius, radius])
         for i, cc in  enumerate(cluster_centers):
             plt.plot(cc.x, cc.y, linestyle = 'None', marker = '<', markersize = 10, color = colors[i])
@@ -101,12 +101,7 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
                     continue
                 plt.plot(p.x, p.y, linestyle = 'None', marker = 'o', color = colors[i])
                 
-            
-            
-        
-        
         #plt.plot(cluster_x, cluster_y, linestyle = 'None', marker = '<', markerfacecolor = 'red')
-        
         plt.show()
         #k_means.print_eps(points, cluster_centers)
         
@@ -114,10 +109,8 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
     def push_fcm_clicked(self):
         self
         
-
 app = QtGui.QApplication(sys.argv)
 myWindow = MyWindowClass(None)
 myWindow.show()
-
 app.exec_()
 
