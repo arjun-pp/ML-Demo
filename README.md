@@ -13,14 +13,14 @@ We would like to thank out mentor [Prof. O.P. Verma](http://www.dce.edu/Web/Depa
 Bibliography
 ------------
 
-[k nn algorithm](http://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm)
-[k means clustering](http://en.wikipedia.org/wiki/K-means_clustering)
+0. [k nn algorithm](http://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm)
+0. [k means clustering](http://en.wikipedia.org/wiki/K-means_clustering)
 
 Tools Used
 ----------
-[Qt Framework](http://qt-project.org/)
-[PyQt Binding](http://www.riverbankcomputing.co.uk/software/pyqt/intro)
-[Matplot Library](http://matplotlib.org/)
-[Spyder IDE](https://github.com/spyder-ide/spyder)
+0. [Qt Framework](http://qt-project.org/)
+0. [PyQt Binding](http://www.riverbankcomputing.co.uk/software/pyqt/intro)
+0. [Matplot Library](http://matplotlib.org/)
+0. [Spyder IDE](https://github.com/spyder-ide/spyder)
 
 
