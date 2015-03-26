@@ -28,6 +28,11 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
     
     def push_knn_clicked(self):
         plt.clf()
+        fig = plt.figure(1)          
+        ax = fig.add_subplot(111)
+        ax.set_title('Plot of k-nn on Iris Data')
+        ax.set_xlabel('x axis')
+        ax.set_ylabel('y axis')
         training_set = []
         test_set = []
         split = 0.67
@@ -80,6 +85,11 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         
     def push_kmeans_clicked(self):
         plt.clf()
+        fig = plt.figure(1)          
+        ax = fig.add_subplot(111)
+        ax.set_title('Plot of k-means')
+        ax.set_xlabel('x coordinates')
+        ax.set_ylabel('y coordinates')
         npoints = 100
         k = 7 # # clusters
         colors = []
