@@ -59,7 +59,7 @@ def get_accuracy(test_set, predictions):
 	for x in range(len(test_set)):
 		if test_set[x][-1] == predictions[x]:
 			correct += 1
-	return (correct/float(len(test_set))) * 100.0
+	return round((correct/float(len(test_set)) * 100.0),2)
     
 #    def main():
 #    	# prepare data
