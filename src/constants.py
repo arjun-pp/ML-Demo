@@ -10,6 +10,6 @@ The project uses Qt framework along with PyQt 4 plugin to create the UI.
 """
 
 
-IRIS_DATA = "../data/iris/iris.data"
+IRIS_DATA = "../data/iris/iris1.data"
 
 

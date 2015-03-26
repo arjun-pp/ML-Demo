@@ -11,7 +11,7 @@ def load_data_set( split, filename, training_set = [], test_set = []):
         lines = csv.reader(csvfile)
         dataset = list(lines)
         for x in range(len(dataset)-1):
-            for y in range(2):
+            for y in range(4):
                 dataset[x][y] = float(dataset[x][y])
             if random.random() < split:
                training_set.append(dataset[x])
@@ -50,6 +50,9 @@ def get_class(neighbors):
             
     sorted_votes = sorted(class_votes.iteritems(), key = operator.itemgetter(1), reverse = True)
     return sorted_votes[0][0]
+    
+def hash_func(x1, x2):
+    return 0.5*(x1 +x2)*(x1 + x2 + 1) + x2;
     
 #    def main():
 #    	# prepare data
