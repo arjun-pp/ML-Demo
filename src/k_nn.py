@@ -54,6 +54,13 @@ def get_class(neighbors):
 def hash_func(x1, x2):
     return 0.5*(x1 +x2)*(x1 + x2 + 1) + x2;
     
+def get_accuracy(test_set, predictions):
+	correct = 0
+	for x in range(len(test_set)):
+		if test_set[x][-1] == predictions[x]:
+			correct += 1
+	return (correct/float(len(test_set))) * 100.0
+    
 #    def main():
 #    	# prepare data
 #    	
