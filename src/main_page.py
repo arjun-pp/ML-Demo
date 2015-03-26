@@ -44,15 +44,15 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
             colors.append(((3 * (i + 1) % 11) / 11.0,
                              (7 * i % 11) / 11.0,
                              (9 * i % 11) / 11.0))
-        plt.axis([3 ,8, 0, 5])
+        plt.axis([10 ,80, 0, 60])
         for x in range(len(training_set)):
             
-            if training_set[x][2] == 'Iris-setosa' :
-                plt.plot(training_set[x][0], training_set[x][1], linestyle = 'None', marker = 'o', markersize = 5, color = colors[0])
-            elif training_set[x][2] == 'Iris-versicolor':
-                plt.plot(training_set[x][0], training_set[x][1], linestyle = 'None', marker = '<', markersize = 5, color = colors[1])
+            if training_set[x][4] == 'Iris-setosa' :
+                plt.plot(k_nn.hash_func(training_set[x][0],training_set[x][1]), k_nn.hash_func(training_set[x][2],training_set[x][3]), linestyle = 'None', marker = 'o', markersize = 5, color = colors[0])
+            elif training_set[x][4] == 'Iris-versicolor':
+                plt.plot(k_nn.hash_func(training_set[x][0],training_set[x][1]), k_nn.hash_func(training_set[x][2],training_set[x][3]), linestyle = 'None', marker = '<', markersize = 5, color = colors[1])
             else :
-                plt.plot(training_set[x][0], training_set[x][1], linestyle = 'None', marker = 's', markersize = 5, color = colors[2])
+                plt.plot(k_nn.hash_func(training_set[x][0],training_set[x][1]), k_nn.hash_func(training_set[x][2],training_set[x][3]), linestyle = 'None', marker = 's', markersize = 5, color = colors[2])
 
                 
         # plot knn
@@ -60,12 +60,12 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
             neighbors = k_nn.get_neighbors(training_set, test_set[x], k)
             result = k_nn.get_class(neighbors)
             for y in range(0,k):
-                if test_set[x][2] == 'Iris-setosa' :
-                    plt.plot(test_set[x][0], test_set[x][1], linestyle = 'None', marker = 'o', markersize = 10, color = colors[0])
-                elif test_set[x][2] == 'Iris-versicolor':
-                    plt.plot(test_set[x][0], test_set[x][1], linestyle = 'None', marker = '<', markersize = 10, color = colors[1])
+                if test_set[x][4] == 'Iris-setosa' :
+                    plt.plot(k_nn.hash_func(test_set[x][0], test_set[x][1]), k_nn.hash_func(test_set[x][2], test_set[x][3]), linestyle = 'None', marker = 'o', markersize = 10, color = colors[0])
+                elif test_set[x][4] == 'Iris-versicolor':
+                    plt.plot(k_nn.hash_func(test_set[x][0], test_set[x][1]), k_nn.hash_func(test_set[x][2], test_set[x][3]), linestyle = 'None', marker = '<', markersize = 10, color = colors[1])
                 else :
-                    plt.plot(test_set[x][0], test_set[x][1], linestyle = 'None', marker = 's', markersize = 10, color = colors[2])
+                    plt.plot(k_nn.hash_func(test_set[x][0], test_set[x][1]), k_nn.hash_func(test_set[x][2], test_set[x][3]), linestyle = 'None', marker = 's', markersize = 10, color = colors[2])
                 print neighbors[y]
                 
             predictions.append(result)
