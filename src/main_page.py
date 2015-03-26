@@ -28,15 +28,15 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
     
     def push_knn_clicked(self):
         plt.clf()
-        training_set=[]
-        test_set=[]
+        training_set = []
+        test_set = []
         split = 0.67
         k_nn.load_data_set(  split, constants.IRIS_DATA, training_set, test_set, )
         
         #plt.text(4 , 10, str('Train set: ' + repr(len(training_set))), size = 15)
         print 'Test set: ' + repr(len(test_set))
     	# generate predictions
-        predictions=[]
+        predictions = []
         k = 3
         colors = []
         for i in xrange(k):
@@ -69,8 +69,9 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
                 print neighbors[y]
                 
             predictions.append(result)
-            print('> predicted=' + repr(result) + ', actual=' + repr(test_set[x][-1]))
-    	
+            print(' predicted=' + repr(result) + ', actual=' + repr(test_set[x][-1]))
+        
+        print "Accuracy = " + repr(k_nn.get_accuracy(test_set, predictions)) + "%"
         plt.show()        
         self 
         
