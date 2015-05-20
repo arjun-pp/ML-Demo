@@ -5,6 +5,9 @@ import k_means
 import constants
 
 import matplotlib.pyplot as plt
+import matplotlib.lines as mLines
+import matplotlib.patches as mpatches
+from matplotlib.patches import Rectangle
 from PyQt4 import QtCore, QtGui, uic
 first_page = uic.loadUiType("../ui/first_page.ui")[0]
 class MyWindowClass(QtGui.QMainWindow, first_page):
@@ -28,6 +31,11 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
     
     def push_knn_clicked(self):
         plt.clf()
+        fig = plt.figure(1)          
+        ax = fig.add_subplot(111)
+        ax.set_title('Plot of k-nn on Iris Data')
+        ax.set_xlabel('x axis')
+        ax.set_ylabel('y axis')
         training_set = []
         test_set = []
         split = 0.67
@@ -71,15 +79,32 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
             predictions.append(result)
             print(' predicted=' + repr(result) + ', actual=' + repr(test_set[x][-1]))
         
-        print "Accuracy = " + repr(k_nn.get_accuracy(test_set, predictions)) + "%"
+        outputacc = "Accuracy = " + repr(k_nn.get_accuracy(test_set, predictions)) + "%"
+        print outputacc
+#==============================================================================
+#         brown_circle = mLines.Line2D([],[],color=colors[0], marker = 'o',markersize = 10,label ='Iris-setosa')
+#         blue_rec = mLines.Line2D([],[],color=colors[1], marker = '<',markersize = 10,label ='Iris-versicolor')
+#         pink_square = mLines.Line2D([],[],color=colors[2], marker = 's',markersize = 10,label ='Iris-virginica')
+#         extra = Rectangle((0, 0), 1, 1, fc="w", fill=False, edgecolor='none', linewidth=0,label=outputacc)
+#==============================================================================
+        brown_circle = mpatches.Patch(color=colors[0], label='Iris-setosa')
+        blue_rec = mpatches.Patch(color=colors[1], label='Iris-versicolor')
+        pink_square = mpatches.Patch(color=colors[2], label='Iris-virginica')
+        extra = mpatches.Patch(color='white', label=outputacc)
+        plt.legend(handles = [brown_circle,blue_rec,pink_square,extra],loc=2)
         plt.show()        
-        self 
+        self
         
     def push_naive_clicked(self):
         self 
         
     def push_kmeans_clicked(self):
         plt.clf()
+        fig = plt.figure(1)          
+        ax = fig.add_subplot(111)
+        ax.set_title('Plot of k-means')
+        ax.set_xlabel('x value')
+        ax.set_ylabel('y value')
         npoints = 100
         k = 7 # # clusters
         colors = []
