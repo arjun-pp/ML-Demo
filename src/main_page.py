@@ -78,7 +78,7 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         self 
         
     def push_naive_clicked(self):
-        filename = 'pima-indians-diabetes.data.csv'
+        filename = '../data/diabetes/pima-indians-diabetes.data'
         splitRatio = 0.67
         dataset = naive_bayes.load_csv(filename)
         trainingSet, testSet = naive_bayes.split_dataset(dataset, splitRatio)
