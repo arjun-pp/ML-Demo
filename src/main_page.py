@@ -2,12 +2,10 @@
 import sys
 import k_nn
 import k_means
+import naive_bayes
 import constants
 
 import matplotlib.pyplot as plt
-import matplotlib.lines as mLines
-import matplotlib.patches as mpatches
-from matplotlib.patches import Rectangle
 from PyQt4 import QtCore, QtGui, uic
 first_page = uic.loadUiType("../ui/first_page.ui")[0]
 class MyWindowClass(QtGui.QMainWindow, first_page):
@@ -16,8 +14,8 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         QtGui.QMainWindow.__init__(self, parent)
         
         self.setupUi(self)
-        self.push_knn.clicked.connect(self.push_knn_clicked)  # Bind the event handlers
-        self.push_naive.clicked.connect(self.push_naive_clicked)  #   to the buttons
+        self.push_knn.clicked.connect(self.push_knn_clicked)  # Bind the event handlers to Buttons
+        self.push_naive.clicked.connect(self.push_naive_clicked)  
         self.push_kmeans.clicked.connect(self.push_kmeans_clicked)
         self.push_fcm.clicked.connect(self.push_fcm_clicked)
 
@@ -31,11 +29,6 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
     
     def push_knn_clicked(self):
         plt.clf()
-        fig = plt.figure(1)          
-        ax = fig.add_subplot(111)
-        ax.set_title('Plot of k-nn on Iris Data')
-        ax.set_xlabel('x axis')
-        ax.set_ylabel('y axis')
         training_set = []
         test_set = []
         split = 0.67
@@ -45,6 +38,7 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         print 'Test set: ' + repr(len(test_set))
     	# generate predictions
         predictions = []
+							
         k = 3
         colors = []
         for i in xrange(k):
@@ -79,38 +73,33 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
             predictions.append(result)
             print(' predicted=' + repr(result) + ', actual=' + repr(test_set[x][-1]))
         
-        outputacc = "Accuracy = " + repr(k_nn.get_accuracy(test_set, predictions)) + "%"
-        print outputacc
-#==============================================================================
-#         brown_circle = mLines.Line2D([],[],color=colors[0], marker = 'o',markersize = 10,label ='Iris-setosa')
-#         blue_rec = mLines.Line2D([],[],color=colors[1], marker = '<',markersize = 10,label ='Iris-versicolor')
-#         pink_square = mLines.Line2D([],[],color=colors[2], marker = 's',markersize = 10,label ='Iris-virginica')
-#         extra = Rectangle((0, 0), 1, 1, fc="w", fill=False, edgecolor='none', linewidth=0,label=outputacc)
-#==============================================================================
-        brown_circle = mpatches.Patch(color=colors[0], label='Iris-setosa')
-        blue_rec = mpatches.Patch(color=colors[1], label='Iris-versicolor')
-        pink_square = mpatches.Patch(color=colors[2], label='Iris-virginica')
-        extra = mpatches.Patch(color='white', label=outputacc)
-        plt.legend(handles = [brown_circle,blue_rec,pink_square,extra],loc=2)
+        print "Accuracy = " + repr(k_nn.get_accuracy(test_set, predictions)) + "%"
         plt.show()        
-        self
+        self 
         
     def push_naive_clicked(self):
-        self 
+        filename = 'pima-indians-diabetes.data.csv'
+        splitRatio = 0.67
+        dataset = naive_bayes.load_csv(filename)
+        trainingSet, testSet = naive_bayes.split_dataset(dataset, splitRatio)
+        print('Split {0} rows into train={1} and test={2} rows').format(len(dataset), len(trainingSet), len(testSet))
+	# prepare model
+        summaries = naive_bayes.summarize_by_class(trainingSet)
+	# test model
+        predictions = naive_bayes.get_predictions(summaries, testSet)
+        accuracy = naive_bayes.get_accuracy(testSet, predictions)
+        print('Accuracy: {0}%').format(accuracy)
+ 
         
     def push_kmeans_clicked(self):
         plt.clf()
-        fig = plt.figure(1)          
-        ax = fig.add_subplot(111)
-        ax.set_title('Plot of k-means')
-        ax.set_xlabel('x value')
-        ax.set_ylabel('y value')
         npoints = 100
         k = 7 # # clusters
         colors = []
         radius = 10
         points = k_means.generate_points(npoints, radius)
         cluster_centers = k_means.lloyd(points, k)
+        naive_bayes.load
         for i in xrange(len(cluster_centers)):
             # set colors
             colors.append(((3 * (i + 1) % 11) / 11.0,
