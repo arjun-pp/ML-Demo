@@ -11,5 +11,6 @@ The project uses Qt framework along with PyQt 4 plugin to create the UI.
 
 
 IRIS_DATA = "../data/iris/iris.data"
+DIABETES_DATA = "../data/diabetes/pima-indians-diabetes.data"
 
 
