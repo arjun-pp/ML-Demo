@@ -4,7 +4,7 @@ import k_nn
 import k_means
 import naive_bayes
 import constants
-
+import c_means
 import matplotlib.pyplot as plt
 from PyQt4 import QtCore, QtGui, uic
 first_page = uic.loadUiType("../ui/first_page.ui")[0]
@@ -78,17 +78,17 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         self 
         
     def push_naive_clicked(self):
-        filename = '../data/diabetes/pima-indians-diabetes.data'
+        filename = constants.DIABETES_DATA
         splitRatio = 0.67
         dataset = naive_bayes.load_csv(filename)
         trainingSet, testSet = naive_bayes.split_dataset(dataset, splitRatio)
-        print('Split {0} rows into train={1} and test={2} rows').format(len(dataset), len(trainingSet), len(testSet))
+        print('Split {0} rows into train = {1} and test = {2} rows').format(len(dataset), len(trainingSet), len(testSet))
 	# prepare model
         summaries = naive_bayes.summarize_by_class(trainingSet)
 	# test model
         predictions = naive_bayes.get_predictions(summaries, testSet)
         accuracy = naive_bayes.get_accuracy(testSet, predictions)
-        print('Accuracy: {0}%').format(accuracy)
+        print('Accuracy: {0} %').format(accuracy)
  
         
     def push_kmeans_clicked(self):
@@ -122,7 +122,11 @@ class MyWindowClass(QtGui.QMainWindow, first_page):
         
         
     def push_fcm_clicked(self):
-        self
+        plt.clf()
+        filename = constants.IRIS_DATA
+        v = []
+        m = 2.1
+        obj = FuzzyCMeans(filename,v,m)
         
 app = QtGui.QApplication(sys.argv)
 myWindow = MyWindowClass(None)
