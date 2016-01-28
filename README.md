@@ -8,7 +8,7 @@ This is developed as a minor project for our undergraduate course in Information
 Acknowledgements
 ----------------
 
-We would like to thank our mentor [Prof. O.P. Verma](http://www.dce.edu/Web/Departments/CSE/faculty/opverma.php) for his invaluable contribution and advice for this project.
+We would like to thank our mentor [Prof. O.P. Verma](http://www.dtu.ac.in/Web/Departments/CSE/faculty/opverma.php) for his invaluable contribution and advice for this project.
 
 Bibliography
 ------------
@@ -22,5 +22,3 @@ Tools Used
 0. [PyQt Binding](http://www.riverbankcomputing.co.uk/software/pyqt/intro)
 0. [Matplot Library](http://matplotlib.org/)
 0. [Spyder IDE](https://github.com/spyder-ide/spyder)
-
-
